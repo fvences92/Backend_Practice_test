@@ -4,6 +4,8 @@ const express = require('express');
 //APPLICATION OBJECT//
 const app = express();
 
+//DATA// 
+
 //ROUTES//
 
 app.get('/', (req, res) => {
