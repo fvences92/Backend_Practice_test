@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     res.send ({
         recipeNames: recipeNames 
     })  
+        console.log(recipeNames)
 
     res.status(200);
 });
@@ -21,16 +22,37 @@ router.get('/details/:name', (req, res) => {
     let count = 0;
     const recipe = recipes.find(r => r.name === req.params.name);
     
-    const output = {
+    const detail = {
       details: {
         ingredients: recipe.ingredients,
         numSteps: recipe.instructions.length
       }
     };
     
-    res.status(200).send(output);
+    res.status(200).send(detail);
   })
   
+router.post ('/', (req, res) => {
+    const recipes = obj.recipes;
+    
+    if (req.body.completed = true) 
+    recipes.push(req.body)
+    else { 
+        res.json("error: Recipe already exists!")
+}
+
+})
+
+
+router.put("/details/:name", (req, res) => {
+    if (req.body.completed = true)
+    res.send(req.body)
+
+    else {
+        req.body.completed = false
+        res.json("error: Recipe does not exist")
+    }
+})
+
 
 export default router;
-
